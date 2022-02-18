@@ -7,7 +7,7 @@ NODEOS_HOME=/root/.local/share/eosio/nodeos
 HOST_WAX_HOME=`pwd`
 
 if [ -z "$1" ]; then
-	docker run -t --sig-proxy=true \
+	docker run -t --sig-proxy=true --name nodeos \
 		-v $HOST_WAX_HOME/data:$NODEOS_HOME/data \
 		-v $HOST_WAX_HOME/config.ini:$NODEOS_HOME/config/config.ini \
 		-v $HOST_WAX_HOME/genesis.json:$NODEOS_HOME/config/genesis.json \
@@ -17,7 +17,7 @@ if [ -z "$1" ]; then
 		nodeos
 else
 	echo "start from snapshot: $1"
-	docker run -t --sig-proxy=true \
+	docker run -t --sig-proxy=true --name nodeos \
 		-v $HOST_WAX_HOME/data:$NODEOS_HOME/data \
 		-v $HOST_WAX_HOME/config.ini:$NODEOS_HOME/config/config.ini \
 		-v $HOST_WAX_HOME/genesis.json:$NODEOS_HOME/config/genesis.json \
