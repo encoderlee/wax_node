@@ -13,7 +13,7 @@ if [ -z "$1" ]; then
 		-v $HOST_WAX_HOME/genesis.json:$NODEOS_HOME/config/genesis.json \
 		-p 127.0.0.1:8888:8888 \
 		-p 9876:9876 \
-		waxteam/production:v2.0.13wax03 \
+		--rm -it waxteam/production:v2.0.13wax03 \
 		nodeos
 else
 	echo "start from snapshot: $1"
@@ -24,7 +24,7 @@ else
 		-v $HOST_WAX_HOME/$1:$NODEOS_HOME/$1 \
 		-p 127.0.0.1:8888:8888 \
 		-p 9876:9876 \
-		waxteam/production:v2.0.13wax03 \
+		--rm -it waxteam/production:v2.0.13wax03 \
 		nodeos --snapshot $NODEOS_HOME/$1
 fi
 
