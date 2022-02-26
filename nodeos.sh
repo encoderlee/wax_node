@@ -11,7 +11,7 @@ if [ -z "$1" ]; then
 		-v $HOST_WAX_HOME/data:$NODEOS_HOME/data \
 		-v $HOST_WAX_HOME/config.ini:$NODEOS_HOME/config/config.ini \
 		-v $HOST_WAX_HOME/genesis.json:$NODEOS_HOME/config/genesis.json \
-		-p 127.0.0.1:8888:8888 \
+		-p 8888:8888 \
 		-p 9876:9876 \
 		--rm -it waxteam/production:v2.0.13wax03 \
 		nodeos
@@ -22,7 +22,7 @@ else
 		-v $HOST_WAX_HOME/config.ini:$NODEOS_HOME/config/config.ini \
 		-v $HOST_WAX_HOME/genesis.json:$NODEOS_HOME/config/genesis.json \
 		-v $HOST_WAX_HOME/$1:$NODEOS_HOME/$1 \
-		-p 127.0.0.1:8888:8888 \
+		-p 8888:8888 \
 		-p 9876:9876 \
 		--rm -it waxteam/production:v2.0.13wax03 \
 		nodeos --snapshot $NODEOS_HOME/$1
