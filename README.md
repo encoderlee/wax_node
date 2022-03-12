@@ -20,7 +20,7 @@ sudo ./install_docker.sh
 3.start node from snapshot
 
 ```
-sudo ./cleos.sh snapshot-xxxxxx.bin
+sudo ./nodeos.sh snapshot-xxxxxx.bin
 ```
 
 4.wait until initialization is complete
@@ -34,7 +34,7 @@ sudo pkill nodeos
 6.normal start node 
 
 ```
-sudo ./cleos.sh
+sudo ./nodeos.sh
 ```
 
 7.check node status
