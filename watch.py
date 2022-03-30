@@ -7,6 +7,8 @@ import sys
 handler = logging.StreamHandler(sys.stdout)
 handler.setFormatter(logging.Formatter("[%(asctime)s]: %(message)s"))
 logging.getLogger().addHandler(handler)
+log = logging.getLogger(__name__)
+log.setLevel(logging.INFO)
 
 def check():
     client = requests.Session()
@@ -16,9 +18,9 @@ def check():
     resp = client.get("https://wax.eoseoul.io/v1/chain/get_info").json()
     mainnet_head = resp["head_block_num"]
     diff = mainnet_head - local_head
-    logging.info("local:{0} mainnet:{1} diff:{2}".format(local_head, mainnet_head, diff))
+    log.info("local:{0} mainnet:{1} diff:{2}".format(local_head, mainnet_head, diff))
     if diff <= 2:
-        logging.info("synchronization is complete")
+        log.info("synchronization is complete")
         exit(0)
 
 
@@ -27,7 +29,7 @@ def main():
         try:
             check()
         except Exception as e:
-            logging.error(e)
+            log.error(e)
         time.sleep(10)
 
 
